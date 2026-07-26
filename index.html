@@ -2,68 +2,12 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>動画自動再生ページ</title>
-  <style>
-    /* 画面全体に動画をフィットさせるスタイル */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-    }
-
-    .video-container {
-      width: 100%;
-      max-width: 960px;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    video {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+  <title>動画自動再生テスト</title>
 </head>
-<body>
+<body style="margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
 
-  <div class="video-container">
-    <!-- 
-      autoplay: 自動再生
-      muted: 消音（ブラウザの自動再生規制をクリアするために必須）
-      playsinline: スマホ（iOS）で全画面にならずにインライン再生する設定
-      loop: 繰り返し再生（必要に応じて）
-      controls: ユーザーが再生/停止や音量を操作できるようにする設定
-    -->
-    <video id="myVideo" autoplay muted playsinline loop controls>
-      <source src="video.mp4" type="video/mp4">
-      お使いのブラウザは動画タグに対応していません。
-    </video>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const video = document.getElementById('myVideo');
-
-      // JavaScript側から確実に再生を試みる設定
-      const playPromise = video.play();
-
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          console.log("動画の自動再生が開始されました。");
-        }).catch(error => {
-          console.warn("自動再生がブロックされました:", error);
-        });
-      }
-    });
-  </script>
+  <!-- muted（消音）と playsinline（スマホ用）が入っていることで自動再生されます -->
+  <video src="video.mp4" autoplay muted playsinline controls style="max-width: 90%; height: auto;"></video>
 
 </body>
 </html>
